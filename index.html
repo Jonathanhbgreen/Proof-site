@@ -2,54 +2,75 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Proof | Non-Caffeinated Focus Drink</title>
+<title>Proof | The non-caffeinated focus &amp; productivity drink</title>
+<meta name="description" content="Proof is a non-caffeinated focus and productivity drink with fully disclosed ingredients.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body data-flavor="peach">
-<nav><p class="logo">PROOF</p><div><a href="index.html">Home</a><a href="about.html">Our Story</a></div></nav>
+<header class="top">
+  <a class="logo" href="index.html">Proof</a>
+  <nav class="pills"><a class="on" href="index.html">Home</a><a href="about.html">Our Story</a></nav>
+  <a class="btn small" href="about.html">Learn more</a>
+</header>
+<div class="ticker"><div id="tk"></div></div>
 
-<header class="hero">
-  <video autoplay muted loop playsinline preload="auto" poster="">
-    <source src="proof-video.mp4" type="video/mp4">
-  </video>
-  <div class="veil"></div>
-  <div class="copy">
-    <h1>Focus, fully disclosed.</h1>
-    <p>Proof is a non-caffeinated focus and productivity drink with 0 mg caffeine. Clean label, sleep-safe, and built for long study and work sessions.</p>
+<main class="hero">
+  <div>
+    <p class="eyebrow">Non-caffeinated focus, coming soon</p>
+    <h1>The non-caffeinated focus &amp; productivity drink.</h1>
+    <p class="lead">A focus drink for late study sessions, second-wind afternoons, and anyone who has already had their caffeine for the day. Fully disclosed ingredients. Zero caffeine.</p>
     <a class="btn" href="about.html">Learn more about Proof</a>
   </div>
-</header>
+  <div class="video">
+    <video autoplay muted loop playsinline preload="auto"><source src="proof-video.mp4" type="video/mp4"></video>
+  </div>
+</main>
+
+<div class="icons">
+  <div><div class="ic">&#9673;</div>Mental focus</div>
+  <div><div class="ic">&#9889;</div>Zero crash</div>
+  <div><div class="ic">&#9790;</div>Evening-safe</div>
+  <div><div class="ic">&#10047;</div>Clean label</div>
+</div>
 
 <section>
-  <h2>Pick your flavor</h2>
-  <p>Tap a flavor to see the whole page take on its colors.</p>
-  <div class="flavors">
-    <button class="on" data-f="peach" data-n="White Peach: soft and premium">White Peach</button>
-    <button data-f="raspberry" data-n="Raspberry Lime: bold and tart">Raspberry Lime</button>
-    <button data-f="pineapple" data-n="Pineapple Coconut: rich and tropical">Pineapple Coconut</button>
+  <h2>Three ways to focus</h2>
+  <p class="sub">Same formula, same promise. Pick a flavor to preview it.</p>
+  <div class="switcher" style="margin-top:22px">
+    <div class="can"><img id="canimg" src="can-peach.jpg" alt="Proof White Peach can" width="520" height="996"></div>
+    <div>
+      <h2 id="fname" style="font-size:1.6rem">White Peach</h2>
+      <p class="sub" id="fdesc">Soft and premium.</p>
+      <div class="flavors">
+        <button class="on" data-f="peach" data-n="White Peach" data-d="Soft and premium.">White Peach</button>
+        <button data-f="raspberry" data-n="Raspberry Lime" data-d="Bold and tart.">Raspberry Lime</button>
+        <button data-f="pineapple" data-n="Pineapple Coconut" data-d="Rich and tropical.">Pineapple Coconut</button>
+      </div>
+      <div class="xf">
+        <h3>X-Factor: Flavor Theme Switcher</h3>
+        <p>Choosing a flavor instantly recolors the whole website and the can to match, so visitors can preview each Proof flavor interactively instead of only reading about it.</p>
+      </div>
+    </div>
   </div>
-  <div class="can"><span>proof</span></div>
-  <p class="flavor-name" id="fname">White Peach: soft and premium</p>
-
-  <div class="grid">
+  <div class="cards">
     <div class="card"><h3>0 mg caffeine</h3><p>Focus support that does not stack on top of your coffee.</p></div>
     <div class="card"><h3>Full disclosure</h3><p>Every active ingredient is listed with its dose. No proprietary blends.</p></div>
     <div class="card"><h3>Clean label</h3><p>No artificial sweeteners, colors or flavors, and no benzoates.</p></div>
   </div>
-
-  <div class="xfactor">
-    <h3>X-Factor: Flavor Theme Switcher</h3>
-    <p>Choosing a flavor instantly recolors the whole website and the can to match, so visitors can preview each Proof flavor interactively instead of only reading about it.</p>
-  </div>
 </section>
 
-<footer>Proof is pre-launch. Ask our FAQ assistant (bottom right) anything.</footer>
+<footer><span><b>PROOF</b></span><span>Dallas, TX &middot; Pre-Launch 2026 &middot; Ask our FAQ assistant (bottom right)</span></footer>
 
 <script>
+var items=['Full Disclosure','Evening-Safe','Clean Label','Clinically-Dosed Ingredients','Caffeine Free','No Proprietary Blends'];
+var h='';for(var r=0;r<4;r++)items.forEach(function(t){h+='<span>'+t+'</span><i>&bull;</i>'});
+document.getElementById('tk').innerHTML=h;
 document.querySelectorAll('.flavors button').forEach(function(b){
   b.addEventListener('click',function(){
     document.body.dataset.flavor=b.dataset.f;
     document.getElementById('fname').textContent=b.dataset.n;
+    document.getElementById('fdesc').textContent=b.dataset.d;
+    var im=document.getElementById('canimg');im.src='can-'+b.dataset.f+'.jpg';im.alt='Proof '+b.dataset.n+' can';
     document.querySelectorAll('.flavors button').forEach(function(x){x.classList.remove('on')});
     b.classList.add('on');
   });
@@ -57,7 +78,6 @@ document.querySelectorAll('.flavors button').forEach(function(b){
 var v=document.querySelector('video');
 if(v){v.muted=true;var p=v.play();if(p&&p.catch){p.catch(function(){})}}
 </script>
-
 <!-- Chatling chatbot (Proof FAQ Assistant) -->
 <script>window.chtlConfig = { chatbotId: "8438656995" }</script>
 <script async data-id="8438656995" id="chtl-script" type="text/javascript" src="https://chatling.ai/js/embed.js"></script>
